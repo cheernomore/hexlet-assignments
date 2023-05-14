@@ -26,6 +26,13 @@ public class CompaniesServlet extends HttpServlet {
         PrintWriter pw = response.getWriter();
         String searchParam = request.getParameter("search");
 
+        if (request.getQueryString() == null) {
+            for (String company: getCompanies()) {
+                pw.write(company + "\n");
+            }
+            pw.close();
+        }
+
         List<String> filteredUsers = getCompanies().stream()
                 .filter(item -> item.contains(searchParam))
                 .toList();
