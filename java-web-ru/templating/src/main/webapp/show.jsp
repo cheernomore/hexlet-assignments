@@ -3,6 +3,7 @@
 <div>
     <p>${user.lastName}</p>
     <p>${user.firstName}</p>
+    <p>${user.email}</p>
     <a href="/users/delete?id=${id}">Delete</a>
 </div>
 <!-- END -->
