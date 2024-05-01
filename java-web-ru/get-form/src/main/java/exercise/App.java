@@ -25,18 +25,13 @@ public final class App {
         app.get("/users", context -> {
             String term = context.queryParam("term");
             UsersPage usersPage = new UsersPage(USERS, term);
-            if (term != null) {
-                StringUtils.lowerCase(term);
-                List<User> res = usersPage.getUsers()
-                        .stream()
-                        .filter(user -> StringUtils.startsWith(StringUtils.lowerCase(user.getFirstName()), term))
-                        .toList();
-                UsersPage page = new UsersPage(res, term);
-                context.render("users/index.jte", model("page", page));
-            } else {
-                context.render("users/index.jte", model("page", usersPage));
-            }
-
+            StringUtils.lowerCase(term);
+            List<User> res = usersPage.getUsers()
+                    .stream()
+                    .filter(user -> StringUtils.startsWith(StringUtils.lowerCase(user.getFirstName()), term))
+                    .toList();
+            UsersPage page = new UsersPage(res, term);
+            context.render("users/index.jte", model("page", page));
         });
         // END
 
