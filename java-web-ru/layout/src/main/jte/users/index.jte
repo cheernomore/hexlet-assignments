@@ -21,9 +21,7 @@
 
         @for(User user: page.getUsers())
             <p>
-                <span>${user.getFirstName()}</span>
-                <span>${user.getLastName()}</span>
-                <span>${user.getEmail()}</span>
+                <span>${user.getFirstName()} ${user.getLastName()}</span>
             </p>
         @endfor
 
