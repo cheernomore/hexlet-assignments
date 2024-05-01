@@ -1,0 +1,1 @@
+@template.layout.page(content = @`<h1>Приветствуем!</h1>`)
