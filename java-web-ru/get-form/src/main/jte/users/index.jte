@@ -6,7 +6,7 @@
     content = @`
         @if(page.getTerm() != null)
             @for(User user: page.getUsers())
-                <span>${user.getFirstName()}</span><br>
+                <span>${user.getFirstName()} ${user.getLastName()}</span><br>
             @endfor
         @endif
 
