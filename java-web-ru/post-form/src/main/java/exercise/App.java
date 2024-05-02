@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 import static io.javalin.rendering.template.TemplateUtil.model;
+
+import io.javalin.http.HttpStatus;
 import io.javalin.rendering.template.JavalinJte;
 import exercise.model.User;
 import exercise.dto.users.UsersPage;
@@ -37,14 +39,11 @@ public final class App {
         });
 
         app.post("/users", context -> {
-            String firstname = StringUtils.capitalize(context.formParam("firstname"));
-            String lastname = StringUtils.capitalize(context.formParam("lastname"));
-            String email = Objects.requireNonNull(StringUtils.lowerCase(context.formParam("email"))).trim();
-            String password = context.formParam("password");
-
-            if (password != null) {
-                Security.encrypt(password);
-            }
+            String firstname = StringUtils.capitalize(context.formParam("firstName"));
+            String lastname = StringUtils.capitalize(context.formParam("lastName"));
+            String email = StringUtils.trim(StringUtils.lowerCase(context.formParam("email")));
+            String password = StringUtils.trim(context.formParam("password"));
+            password = Security.encrypt(password);
 
             User user = new User(firstname, lastname, email, password);
             UserRepository.save(user);
