@@ -24,7 +24,6 @@ public abstract class ProductMapper{
     @Mapping(target = "price", source = "cost")
     @Mapping(target = "vendorCode", source = "barcode")
     public abstract ProductDTO map(Product product);
-
     // source всегда DTO
 }
 // END

@@ -15,8 +15,8 @@ class WelcomeController {
     private Daytime daytime;
 
     @GetMapping
-    public void welcome() {
-        System.out.println("It is " + daytime.getName() + " now! Welcome to Spring!");
+    public String welcome() {
+        return "It is " + daytime.getName() + " now! Welcome to Spring!";
     }
 }
 // END

@@ -5,16 +5,12 @@ import exercise.dto.BookDTO;
 import exercise.dto.BookUpdateDTO;
 import exercise.exception.ResourceNotFoundException;
 import exercise.mapper.BookMapper;
-import exercise.model.Author;
 import exercise.model.Book;
-import exercise.repository.AuthorRepository;
 import exercise.repository.BookRepository;
-import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class BookService {
@@ -22,9 +18,6 @@ public class BookService {
 
     @Autowired
     private BookRepository bookRepository;
-
-    @Autowired
-    private AuthorRepository authorRepository;
 
     @Autowired
     private BookMapper bookMapper;
